@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Test PRF</title>
+		<meta name="viewport" content="width=570">
+		<style>
+			@import "../../dojo/resources/dojo.css";
+			@import "../css/dgrid.css";
+			@import "../../dijit/themes/claro/claro.css";
+			@import "../css/skins/claro.css";
+
+			.heading {
+				font-weight: bold;
+				padding-bottom: 0.25em;
+			}
+
+			#grid {
+				margin: 10px;
+				height: 15em;
+				width: 500px;
+			}
+
+			.outer {
+				border: 1px solid #333;
+				padding: 0 4px;
+			}
+
+			.rendercell {
+				background-color: #ccf;
+			}
+
+			.formatter {
+				background-color: #cfc;
+			}
+		</style>
+		<script src="../../dojo/dojo.js" data-dojo-config="async: true"></script>
+		<script>
+			require(["erql/prf"],function(prf){
+				var Z=prf.z,
+					S=prf.s,
+					I=prf.i,
+					C=prf.c,
+					R=prf.r;
+				var add = R(I(1,0), C(S, I(3,0)));
+				var mul = R(Z, C(add, I(3,0), I(3,2)));
+				console.log(mul(2,3));
+			});
+		</script>
+	</head>
+	<body class="claro">
+	</body>
+</html>
