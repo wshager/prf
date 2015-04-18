@@ -1,2 +1,2 @@
 # prf
-PRF in javascript
+Primitive Recursive Functions in javascript
